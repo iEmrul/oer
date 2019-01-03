@@ -1,0 +1,73 @@
+<?php
+
+
+/**
+ * Implements hook_schema().
+ */
+function oer_schema() {
+  $schema = [];
+  
+  $schema['element_add'] = [
+    'description' => 'Stores information about OER Modules',
+    'fields' => [
+      'id' => [
+        'description' => 'Unique ID of the element',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'name' => [
+        'description' => 'The name of the animal.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'type' => [
+        'description' => 'The type of the animal.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'birthdate' => [
+        'description' => 'The birth date of the animal.',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'weight' => [
+        'description' => 'The weight of the animal.',
+        'type' => 'float',
+        'not null' => TRUE,
+        'default' => 0.0,
+      ],
+      'description' => [
+        'description' => 'A description of the animal.',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  
+  return $schema;
+}
+
+/**
+ * Implements hook_install()
+ */
+function oer_install() {
+  drupal_set_message(t('Awesome! You have a zoo!'));
+}
+
+/**
+ * Implements hook_uninstall()
+ */
+function oer_uninstall() {
+  drupal_set_message(t('Oh no! Please re-install me!'), 'warning');
+}
+

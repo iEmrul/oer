@@ -76,8 +76,7 @@ class OERAddForm extends FormBase {
       '#date_time_element' => 'none',
     ];
     $form['weight'] = [
-      '#type' => 'textfield',
-      '#size' => 5,
+      '#type' => 'number',
       '#field_suffix' => $this->t('kg'),
       '#required' => TRUE,
       '#default_value' => !empty($animal) ? $animal->weight : NULL,
@@ -106,7 +105,16 @@ class OERAddForm extends FormBase {
 
   
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
+    ksm($form_state->getValues());
+    $animal = [
+      'name' => $form_state->getValue('name'),
+      'type' => $form_state->getValue('type'),
+      'birthdate' => $form_state->getValue('birthdate')->format('U'),
+      'weight' => $form_state->getValue('weight'),
+      'description' => $form_state->getValue('description'),
+    ];
+    $this->connection->insert('element_add')
+          ->fields($animal)
+          ->execute();
   }
-
 }

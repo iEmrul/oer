@@ -1,0 +1,6 @@
+name: OER
+type: module
+description: 'A Template Module Built for OER NIH'
+package: OER Module
+version: '8.x-1.0'
+core: '8.x'

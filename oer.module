@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function oer_theme($existing, $type, $theme, $path) {
+  return [
+    'home' => [
+        'variables' => [],
+    ],
+  ];
+}
+
+function template_preprocess_home(&$variables) {
+  $variables['#attached']['library'][] = 'oer/home';
+}

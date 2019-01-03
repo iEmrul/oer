@@ -1,0 +1,15 @@
+oer.home:
+  path: '/oer'
+  defaults:
+    _controller: '\Drupal\oer\Controller\OERController::home'
+    _title: 'OER Template Module'
+  requirements:
+    _permission: 'access content' 
+    
+oer.add:
+  path: '/oer/add'
+  defaults:
+    _form: '\Drupal\oer\Form\OERAddForm'
+    _title: 'Add'
+  requirements:
+    _permission: 'access content'
